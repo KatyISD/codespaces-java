@@ -1,11 +1,7 @@
 FROM alpine:3.20
 
-RUN  apk update \
+RUN apk update \
   && apk upgrade \
-  && apk add ca-certificates \
+  && apk add --no-cache ca-certificates coreutils curl unzip bash git nss tzdata openjdk25-jdk \
   && update-ca-certificates \
-  && apk add --update coreutils && rm -rf /var/cache/apk/*   \ 
-  && apk add --update openjdk25-jdk tzdata curl unzip bash \
-  && apk add --no-cache git \
-  && apk add --no-cache nss \
   && rm -rf /var/cache/apk/*
